@@ -1,0 +1,246 @@
+#hero {
+    background-image: url(/images/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+}
+
+.hero.home {
+    height: calc(100vh - $nav-height);
+    color: #fff;
+
+    div {
+        padding: calc(40vh - $nav-height) 250px 0;
+
+        * {
+            margin: 15px;
+        }
+
+        p {color: #fff;}
+
+        a {
+            position: relative;
+            top: 25px;
+            left: 25px;
+        }
+
+        @media screen and (max-width: 800px) {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            width: 100%;
+            padding: calc(40vh - $nav-height) 0 0 0;
+
+            p {margin: 5px 15px;}
+
+            a {width: 200px;}
+        }
+
+
+    }
+
+}
+
+.ribbon {
+    padding: 50px 0;
+    background-color: $primary;
+    color: #fff;
+    box-shadow: 0 5px $accent inset;
+    display: flex;
+    flex-flow: row wrap;
+
+    div {
+        flex-grow: 1;
+    }
+
+    .ribbon-callout {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+            font-weight: bold;
+        }
+        p {color: #fff;}
+    
+        @media screen and (max-width: 1009px) {
+            margin: 0 20px;
+        }
+    
+    }
+
+    .ribbon-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 50px;
+       
+        @media screen and (max-width: 1009px) {
+            margin: 20px 0;
+        }
+    }
+}
+
+.featured {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 10px 0;
+    justify-content: space-evenly;
+
+    .featured-image {
+        @media screen and (min-width: 800px) {
+            flex: 1
+        }
+
+        margin: auto;
+
+        img {
+            border-radius: 5px;
+            box-shadow: -1rem -1rem 0 0 $accent-two;
+            transition: all 0.3s;
+            // max-width: 500px;
+
+
+            &:hover {
+                box-shadow: none;
+                cursor: pointer;
+            }
+        }
+
+
+        
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+
+        }
+
+    }
+
+    .featured-content {
+        display: flex;
+        flex-flow: column wrap; 
+        justify-content: space-between;
+        padding: 0 20px;
+        margin: auto;
+        
+        @media screen and (min-width: 800px) {
+            flex: 1;
+            padding: 0;
+        }
+
+        .featured-title {
+            display: flex;
+            flex-flow: column;
+
+            &::after {
+                content: "";
+                position: relative;
+                margin: auto;
+                height: 2px;
+                width: 40%;
+                top: 5px;
+                background-color: $accent-two;
+            }
+        }
+        
+        h3 {
+            font-size: 32px;
+            font-weight: bold;
+            color: $primary;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        p {
+            padding: 10px 50px 40px;
+
+            @media screen and (max-width: 800px) {
+                padding: 10px 0 40px;
+            }
+
+        }
+    }
+
+    .btn {
+        width: 200px;
+        text-align: center;
+        left: 50%;
+        align-self: flex-end;
+    }
+
+    
+
+}
+
+.spot-location {
+    color: $accent;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 0 15px 0 !important;
+    text-align: center;
+}
+
+
+.recent-spots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+
+    @media screen and (max-width: 700px) {
+        grid-template-columns: 1fr;
+        
+    }
+
+    .spot-card {
+        padding: 20px;
+        display: flex;
+        flex-flow: column wrap;
+
+        .spot-location {
+            text-align: left;
+            padding-bottom: 25px ;
+        }
+
+        h3 {
+            font-weight: bold;
+        }
+
+        img {
+            border-radius: 5px;
+            box-shadow: 0 0 5px $accent-two;
+            transition: all 0.3s;
+            
+            &:hover {
+                box-shadow: 0 0 5px $accent;
+                transform: skew(1deg);
+            }
+        }
+    
+        .spot-content {
+            padding: 15px 10px;
+            p {color: #fff;}
+
+            a {
+                float: right;
+                margin-top: 25px;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: relative;
+            left: 0;
+            top: -50px;
+            display: block;
+            height: 2px;
+            width: 20%;
+            // margin: 0 auto;
+            background-color: $accent;
+        }
+    
+    }
+
+}

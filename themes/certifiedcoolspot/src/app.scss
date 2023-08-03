@@ -1,0 +1,211 @@
+/*
+Theme Name: Certified Cool Spot
+Author: Brandon Miller
+*/
+
+@import "reset";
+@import "variables";
+@import "nav";
+@import "footer";
+@import "home";
+@import "spots";
+
+
+img {
+    max-width: 100%; //temp until i style them bc fuck bootstrap
+}
+
+
+::marker {
+    color: transparent !important; 
+}
+
+html, body {
+    font-family: sans-serif;
+}
+
+.page-wrap {
+    margin-top: $nav-height;
+}
+
+.section {
+    padding: 30px 100px;
+    @media screen and (max-width: 1100px) {
+        padding: 30px;
+    }
+
+    .section-heading {
+        margin: 10px 0 20px;
+        &::after {
+            content: "";
+            display: block;
+            position: relative;
+            height: 2px;
+            width: 10%;
+            top: 5px;
+            background-color: $accent-two
+        }
+    }
+
+    &.dark {
+        background-color: $primary;
+        box-shadow: 0 5px $accent inset;
+        h1, h2, h3 {color: #fff;}
+    }
+
+}
+
+// headings
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+h2 {
+    font-size: 38px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 28px;
+    padding: 10px 0;
+}
+
+// text style
+
+p {
+    font-size: 18px;
+    letter-spacing: .05rem;
+    color: #111;
+}
+
+a {
+    font-size: 18px;
+    letter-spacing: .05rem;
+    color: $accent;
+}
+
+
+.hero {height: 300px;} // set default height of hero
+
+// buttons
+
+.btn {
+    border-radius: 2px;
+    padding: 10px 25px;
+    font-size: 18px;
+    border: none;
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-accent { // default button class
+    background-color: $accent;
+    color: #fff;
+    &:hover {
+        background-color: $accent-two;
+    }
+} 
+
+.btn-accent-two { // default button class
+    background-color: $accent-two;
+    color: #fff;
+    &:hover {
+        background-color: $accent;
+    }
+}
+
+.layered-btn {
+    box-shadow: -.75rem -.75rem 0 0 #fff;
+    transition: all 0.3s;
+
+    &:hover {
+        box-shadow: 0 0 0 0 #fff, inset 6em 3.5em 0 0 #fff;
+        color: $primary;
+    }
+}
+
+.layered-btn-accent {
+    box-shadow: -.75rem -.75rem 0 0 $accent;
+    transition: all 0.3s;
+
+    &:hover {
+        box-shadow: 0 0 0 0 #fff, inset 6em 3.5em 0 0 $accent;
+        color: #fff;
+    }
+}
+
+.layered-btn-sm {
+    box-shadow: -.25rem -.25rem 0 0 #fff;
+    transition: all 0.3s;
+
+    &:hover {
+        box-shadow: 0 0 0 0 #fff, inset 6em 3.5em 0 0 #ffffff;
+        color: $primary;
+    }
+}
+
+// forms
+
+form {
+
+    display: flex;
+    flex-flow: column wrap;
+
+    div {
+        display: flex;
+    }
+
+    .form-items-row {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    input {
+        padding: 10px;
+        border: none;
+        border-radius: 2px;
+        margin: 0 5px 5px;
+
+        &::placeholder {
+            font-size: 12px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        &.full-width {
+            width: 100%;
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                margin: 10px 15px;
+            }
+        }
+
+        &.half-width {
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                margin: 10px 15px;
+            }
+        }
+    }
+
+    button {
+        margin: 10px 20px 5px;
+    }
+}
+
+
+// misc styles
+
+.middle-underline-accent-two {
+    width: 80%;
+    height: 1px;
+    margin: 5px auto;
+    border-bottom: 2px solid $accent-two;
+}
