@@ -212,6 +212,7 @@
             border-radius: 5px;
             box-shadow: 0 0 5px $accent-two;
             transition: all 0.3s;
+            max-height: 420px;
             
             &:hover {
                 box-shadow: 0 0 5px $accent;
@@ -244,3 +245,4 @@
     }
 
 }
+

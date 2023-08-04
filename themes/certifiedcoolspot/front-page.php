@@ -43,7 +43,7 @@
     
     
     
-    <!-- Basic loop for Spots -->
+    <!-- Loop for recent spots and latest spot -->
     
     <?php
     $args = array(
@@ -51,12 +51,11 @@
         'posts_per_page' => 4,
         'offset' => 1,
     );
-    $the_query = new WP_Query( $args ); ?>
-    
-    <?php
-        $latest_spot = new WP_Query(array(
-            'post_type' => 'spots',
-            'posts_per_page' => 1,
+    $recent_spots = new WP_Query( $args );
+
+    $latest_spot = new WP_Query(array(
+        'post_type' => 'spots',
+        'posts_per_page' => 1,
         ),);
     ?>
     
@@ -97,12 +96,13 @@
     
     <!-- recent spots -->
     <div class="section dark">
+        <div class="progress-bar-dark"></div>
         <h2 class="section-heading">More Certified Cool Spots.</h2>
             
-            <?php if ( $the_query->have_posts() ) : ?>
+            <?php if ( $recent_spots->have_posts() ) : ?>
             <div class="recent-spots">
                 <?php
-                while ( $the_query->have_posts() ) : $the_query->the_post(); 
+                while ( $recent_spots->have_posts() ) : $recent_spots->the_post(); 
                 $location = get_the_terms( $post->ID, 'locations' );
                 ?>
                 
