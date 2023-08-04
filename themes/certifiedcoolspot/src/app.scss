@@ -5,6 +5,7 @@ Author: Brandon Miller
 
 @import "reset";
 @import "variables";
+@import "breakpoints";
 @import "nav";
 @import "footer";
 @import "home";
@@ -210,4 +211,13 @@ form {
     height: 1px;
     margin: 5px auto;
     border-bottom: 2px solid $accent-two;
+}
+
+// global styling for location of a spot
+.spot-location {
+    color: $accent;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 0 15px 0 !important;
+    text-align: center;
 }

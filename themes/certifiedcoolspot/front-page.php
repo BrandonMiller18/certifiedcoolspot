@@ -1,5 +1,12 @@
 <?php get_header();?>
+<script>
 
+    function setBackground() {
+
+    }
+
+
+</script>
 <div class="page-wrap">
     <!-- Homepage Hero -->
     <div id="hero" class="hero home">
@@ -92,7 +99,47 @@
         </div>
     
     </div>
-     <!-- end most recent spot -->
+    <!-- end most recent spot -->
+
+    
+
+    <!-- locations callout -->
+
+    <?php
+    $args = array(
+        'taxonomy' => 'locations',
+        'hide_empty' => false,
+    );
+
+    $terms = get_terms($args);
+    shuffle($terms);
+    $locations = array_slice( $terms, 0, 3 );
+    
+
+    ?>
+
+    <div class="locaitons-callout">
+        <?php
+        foreach ( $locations as $location ):
+            // $term_meta = get_metadata('term');
+            $term_id = $location->term_id;
+            
+            $image_id = get_term_meta($term_id, 'image', true);
+            $image_data = wp_get_attachment_image_src($image_id, 'full');
+            $image = $image_data[0];
+        
+        ?>
+        <div location="<?php echo $location->name; ?>" 
+        style="
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?php
+        if ( !empty( $image ) ) {
+            echo esc_url( $image );
+        };
+        ?>;
+        " class="location"></div>
+        <?php endforeach ?>
+    </div>
+    <!-- end locations callout -->
     
     <!-- recent spots -->
     <div class="section dark">

@@ -2,10 +2,18 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    box-shadow: 0 5px #f0f inset;
+    
+    @media screen and (max-width: 800px) {
+        justify-content: left;
+    }
 
-    div {
+    > div {
         display: flex;
         flex-flow: column wrap;
+        @media screen and (max-width: 800px) {
+            padding: 30px 20px;
+        }
         // background-color: red;
         .section-heading {
             &::after {
@@ -16,6 +24,19 @@
                 width: 50%;
                 top: 5px;
                 background-color: $accent-two
+            }
+        }
+
+        &:last-child {
+            flex-basis: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            ul {
+                display: flex;
+                li {padding: 25px;
+                }
             }
         }
     }
@@ -29,5 +50,6 @@
     .socials {
         display: flex;
         flex-flow: row wrap;
+        justify-content: center;
     }
 }
