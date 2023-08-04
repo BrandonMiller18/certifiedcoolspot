@@ -27,11 +27,12 @@
     </div>
     <div>
         <a href="/"><img src="<?php bloginfo('template_directory');?>/images/logo.png" class=""></a>
-        <div class="socials">
-            <a href="/"><img src="<?php bloginfo('template_directory');?>/images/logo.png" class=""></a>
-            <a href="/"><img src="<?php bloginfo('template_directory');?>/images/logo.png" class=""></a>
-            <a href="/"><img src="<?php bloginfo('template_directory');?>/images/logo.png" class=""></a>
-        </div>
+        <ul>
+            <li><i class="fa-brands fa-instagram fa-2xl"></i></li>
+            <li><i class="fa-brands fa-instagram fa-2xl"></i></li>
+            <li><i class="fa-brands fa-instagram fa-2xl"></i></li>
+
+        </ul>
     </div>
 
 </div>

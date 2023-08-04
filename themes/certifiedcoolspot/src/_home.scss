@@ -1,3 +1,4 @@
+// homepage hero section
 #hero {
     background-image: url(/images/hero.jpg);
     background-repeat: no-repeat;
@@ -41,6 +42,7 @@
 
 }
 
+// homepage ribbon with form
 .ribbon {
     padding: 50px 0;
     background-color: $primary;
@@ -58,15 +60,10 @@
         flex-flow: column wrap;
         justify-content: center;
         align-items: center;
+        margin: 0 20px;
 
-        h2 {
-            font-weight: bold;
-        }
-        p {color: #fff;}
-    
-        @media screen and (max-width: 1009px) {
-            margin: 0 20px;
-        }
+        h2 {font-weight: bold;}
+        p {color: #fff;}     
     
     }
 
@@ -82,16 +79,17 @@
     }
 }
 
+// featured post (most recent post)
 .featured {
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-    margin: 10px 0;
+    margin: 20px 0 10px;
     justify-content: space-evenly;
 
     .featured-image {
-        @media screen and (min-width: 800px) {
-            flex: 1
+        @include md {
+            flex: 1;
         }
 
         margin: auto;
@@ -109,14 +107,6 @@
             }
         }
 
-
-        
-
-        @media screen and (max-width: 500px) {
-            width: 100%;
-
-        }
-
     }
 
     .featured-content {
@@ -126,9 +116,9 @@
         padding: 0 20px;
         margin: auto;
         
-        @media screen and (min-width: 800px) {
+        @include md {
             flex: 1;
-            padding: 0;
+            padding: 10px;
         }
 
         .featured-title {
@@ -141,7 +131,7 @@
                 margin: auto;
                 height: 2px;
                 width: 40%;
-                top: 5px;
+                top: -8px;
                 background-color: $accent-two;
             }
         }
@@ -175,15 +165,7 @@
 
 }
 
-.spot-location {
-    color: $accent;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 0 0 15px 0 !important;
-    text-align: center;
-}
-
-
+// recent spots section on homepage
 .recent-spots {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -195,7 +177,7 @@
     }
 
     .spot-card {
-        padding: 20px;
+        padding: 40px 50px;
         display: flex;
         flex-flow: column wrap;
 
@@ -246,3 +228,31 @@
 
 }
 
+.locaitons-callout {
+    padding-top: 50px;
+    display: flex;
+    flex-flow: row;
+
+    div {
+        height: 350px;
+        background-color: red;
+        flex-grow: 1;
+        outline: black solid 1px;
+        display: flex;
+        background-size: cover;
+        align-items: center;
+        justify-content: center;
+
+
+        &:hover {
+            cursor: pointer;
+
+            &::after {
+                content: attr(location);
+                color: #fff;
+                font-size: 50px;
+                position: absolute;
+            }
+        }
+    }
+}
