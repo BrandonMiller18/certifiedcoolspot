@@ -43,7 +43,7 @@ function cool_spots_cpt() {
         'description' => 'Make a post about a certified cool spot!',
         'public' => true,
         'has_archive' => true,
-        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'supports' => array('title', 'editor', 'thumbnail'),
         'hierarchical' => false,
     );
 
