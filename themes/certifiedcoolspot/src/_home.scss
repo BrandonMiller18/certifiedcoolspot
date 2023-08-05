@@ -145,10 +145,9 @@
         }
 
         p {
-            padding: 10px 50px 40px;
-
-            @media screen and (max-width: 800px) {
-                padding: 10px 0 40px;
+            padding: 10px 0 40px;
+            @include md {
+                padding: 10px 50px 40px;     
             }
 
         }
@@ -168,18 +167,21 @@
 // recent spots section on homepage
 .recent-spots {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 10px 20px;
 
-    @media screen and (max-width: 700px) {
-        grid-template-columns: 1fr;
+    @include lg {
+        grid-template-columns: 1fr 1fr;
         
     }
 
     .spot-card {
-        padding: 40px 50px;
+        padding: 40px 0px;
         display: flex;
         flex-flow: column wrap;
+        @include sm {
+            padding: 40px 50px;
+        }
 
         .spot-location {
             text-align: left;
@@ -190,11 +192,17 @@
             font-weight: bold;
         }
 
+        a {text-align: center;}
+        
         img {
             border-radius: 5px;
             box-shadow: 0 0 5px $accent-two;
             transition: all 0.3s;
             max-height: 420px;
+            
+            @include breakpoint(1670px) {
+                max-width: 625px !important;
+            }
             
             &:hover {
                 box-shadow: 0 0 5px $accent;
@@ -206,9 +214,14 @@
             padding: 15px 10px;
             p {color: #fff;}
 
+            @include breakpoint(1670px) {
+                margin-right: 75px;
+            }
+
             a {
                 float: right;
                 margin-top: 25px;
+                
             }
         }
 
@@ -228,30 +241,67 @@
 
 }
 
+// locations callout on homepage
 .locaitons-callout {
     padding-top: 50px;
-    display: flex;
-    flex-flow: row;
+    display: grid;
+    grid-template-columns: 1fr;
 
-    div {
-        height: 350px;
-        background-color: red;
+    @include md {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    a {
+        height: 250px;
         flex-grow: 1;
-        outline: black solid 1px;
         display: flex;
-        background-size: cover;
         align-items: center;
         justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s;
 
+        &::after {
+            content: attr(location);
+            transition: all 0.3s;
+            visibility: hidden;
+            color: #fff;
+        }
+        
+        @include md {
+            height: 350px;
+            box-shadow: 0 10px $accent inset, 0 -10px $accent inset;
+            
 
-        &:hover {
-            cursor: pointer;
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 10px $accent-two inset, 0 -10px $accent-two inset, -3px 0 $accent-two inset, 3px 0 $accent-two inset;
+                transition: transform 0.3s;
+                transform: scaleY(1.1);
+                outline: $accent-two solid 2px;
+                border-radius: 5px;
+    
+                &::after {
+                    content: attr(location);
+                    color: #fff;
+                    font-size: 44px;
+                    position: absolute;
+                    visibility: visible;
+                }
+            }
+        }
 
+        @include mobile-only { // mobile-only is everything smaller than md
+            justify-content: left;
+            &:first-child {box-shadow: 0 10px $accent inset;}
+            &:last-child {box-shadow: 0 -10px $accent inset;}
             &::after {
                 content: attr(location);
                 color: #fff;
-                font-size: 50px;
+                font-size: 40px;
+                padding: 10px;
                 position: absolute;
+                visibility: visible;
             }
         }
     }

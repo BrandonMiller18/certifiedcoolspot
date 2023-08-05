@@ -50,8 +50,23 @@ html, body {
 
     &.dark {
         background-color: $primary;
-        box-shadow: 0 5px $accent inset;
         h1, h2, h3 {color: #fff;}
+
+    &.divider-top-accent {
+        box-shadow: 0 10px $accent inset;
+    }
+
+    &.divider-top-accent-two {
+        box-shadow: 0 10px $accent-two inset;
+    }
+
+    &.divider-bottom-accent {
+        box-shadow: 0 -10px $accent inset;
+    }
+
+    &.divider-bottom-accent-two {
+        box-shadow: 0 -10px $accent-two inset;
+    }
 
 
     }

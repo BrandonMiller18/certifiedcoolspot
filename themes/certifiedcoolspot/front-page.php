@@ -1,12 +1,5 @@
 <?php get_header();?>
-<script>
 
-    function setBackground() {
-
-    }
-
-
-</script>
 <div class="page-wrap">
     <!-- Homepage Hero -->
     <div id="hero" class="hero home">
@@ -129,14 +122,9 @@
             $image = $image_data[0];
         
         ?>
-        <div location="<?php echo $location->name; ?>" 
-        style="
-        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(<?php
-        if ( !empty( $image ) ) {
-            echo esc_url( $image );
-        };
-        ?>;
-        " class="location"></div>
+        <a location="<?php echo $location->name; ?>" href="<?php echo get_term_link($location) ?>" style="
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<?php if( !empty( $image ) ) : echo $image; endif; ?>) center" class="location"">
+        </a>
         <?php endforeach ?>
     </div>
     <!-- end locations callout -->
@@ -168,7 +156,7 @@
                     </a>
                     <div class="spot-content">
                         <?php the_excerpt() ?>
-                        <a href="<?php the_permalink() ?>" class="btn btn-accent-two layered-btn-accent">Keep reading</a>
+                        <a href="<?php the_permalink() ?>" class="btn btn-accent-two layered-btn-accent" role="button">Keep reading</a>
                     
                     
                     
