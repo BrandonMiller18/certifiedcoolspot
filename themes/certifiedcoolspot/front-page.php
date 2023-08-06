@@ -4,7 +4,7 @@
     <!-- Homepage Hero -->
     <div id="hero" class="hero home">
         <div>
-            <h1 class="">Find cool spots here.</h1>
+            <h1 class="">DEPLOYMENT TEST.</h1>
             <p class="">Some spots are just cerifiably cool...</p>
             <a href="#featured-spot" class="btn btn-accent layered-btn" role="button">Find Cool Spots</a>
         </div>
