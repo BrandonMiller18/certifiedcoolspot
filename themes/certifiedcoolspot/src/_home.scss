@@ -278,7 +278,6 @@
                 box-shadow: 0 10px $accent-two inset, 0 -10px $accent-two inset, -3px 0 $accent-two inset, 3px 0 $accent-two inset;
                 transition: transform 0.3s;
                 transform: scaleY(1.1);
-                outline: $accent-two solid 2px;
                 border-radius: 5px;
     
                 &::after {

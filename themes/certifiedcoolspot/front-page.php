@@ -131,7 +131,7 @@
     
     <!-- recent spots -->
     <div class="section dark">
-        <div class="progress-bar-dark"></div>
+        
         <h2 class="section-heading">More Certified Cool Spots.</h2>
             
             <?php if ( $recent_spots->have_posts() ) : ?>
