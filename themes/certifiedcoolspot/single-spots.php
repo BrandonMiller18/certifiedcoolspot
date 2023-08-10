@@ -30,7 +30,9 @@ $location = get_the_terms( $post->ID, 'locations' );
                 <p>Location: <a href="/locations/<?php echo $location[0]->slug;  ?>"> <?php echo $location[0]->name ?></a></p>
             </div>
             <?php if(has_post_thumbnail()):?>
-                <img class="post-image" src="<?php the_post_thumbnail_url('blog-large');?>" alt="<?php the_title();?>">
+            <div class="post-image">
+                <img src="<?php the_post_thumbnail_url('blog-large');?>" alt="<?php the_title();?>">
+            </div>
             <?php endif ?>
             <div class="post-content">
                 <?php echo the_content(); ?>
