@@ -186,6 +186,16 @@ a {
     }
 }
 
+.layered-btn-sm-accent {
+    box-shadow: -.25rem -.25rem 0 0 $accent;
+    transition: all 0.3s;
+
+    &:hover {
+        box-shadow: 0 0 0 0 #fff, inset 6em 3.5em 0 0 $accent;
+        color: $primary;
+    }
+}
+
 // forms
 
 form {
