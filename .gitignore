@@ -10,12 +10,6 @@
 !/themes/certifiedcoolspot
 
 #---------------------------
-# WordPress plugins
-#---------------------------
-/plugins/*
-!/plugins/custom-plugin
-
-#---------------------------
 # WP MU plugins: these are
 # managed by the platform.
 #---------------------------
