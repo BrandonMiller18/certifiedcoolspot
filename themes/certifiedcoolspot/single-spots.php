@@ -43,11 +43,21 @@ $location = get_the_terms( $post->ID, 'locations' );
         <div>
             <div class="post-attr">
                 <h2>About the spot.</h2>
+
+                <?php $data = get_acf_fields();
+                $website = $data['website'];
+                $address = $data['address'];
+                $year_founded = $data['year_founded'];
+                $certified_since = $data['certified_since'];
+                
+                
+                ?>
+
                 <ul>
-                    <li>Website: </li>
-                    <li>Address: </li>
-                    <li>Founded: </li>
-                    <li>Certified Since: </li>
+                    <?php if ($website) : echo "<li><strong>Website:</strong> ", "<a href='",$website,"'target='_blank'>",$website,"</a></li>"; endif; ?>
+                    <?php if ($address) : echo "<li><strong>Address:</strong> ", $address,"</li>"; endif; ?>
+                    <?php if ($year_founded) : echo "<li><strong>Founded:</strong> ", $year_founded, "</li>"; endif; ?>
+                    <?php if ($certified_since) : echo "<li><strong>Certified Since:</strong> ", $certified_since, "</li>"; endif; ?>
                 </ul>
                 <div class="share">
                     <h3>Share this spot.</h3>
