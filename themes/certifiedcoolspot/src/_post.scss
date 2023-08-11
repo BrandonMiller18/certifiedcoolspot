@@ -102,6 +102,10 @@
     margin: auto;
 
     @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
         grid-template-columns: repeat(3, 1fr);
     }
 

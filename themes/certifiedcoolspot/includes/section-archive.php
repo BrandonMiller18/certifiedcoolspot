@@ -1,35 +1,47 @@
 <?php 
 
-if( have_posts() ): while( have_posts() ): the_post(); 
-$location = get_the_terms( $post->ID, 'locations' );
+$args = array(
+    'post_type' => 'spots',
+    'posts_per_page' => 6,
+    'paged' => $paged,
+    'order' => 'DESC', 
+    'orderby' => 'date'
+);
+$recent_spots = new WP_Query( $args ); ?>
 
-?>
-
-<div class="card m-3 p-2 spot-cards">
-    <img class="card-img-top" src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title();?>">
-    <div class="card-body">
-    
-    
-        <h3 class="card-title"><?php the_title(); ?></h3>
+    <?php if ( $recent_spots->have_posts() ) : ?>
+    <div class="more-spots-grid">
+        <?php
+        $i = 0;
+        while ( $recent_spots->have_posts() ) : $recent_spots->the_post(); 
+        $location = get_the_terms( $post->ID, 'locations' );
+        ?>
         
-        <?php if($location):?>
-        <p>            
-        
-            <?php echo $location[0]->name ?>
-
-
             
-        </p>
-        <?php endif; ?>
-
+        <div class="spot-card">
+            <a href="<?php the_permalink() ?>">
+                <img class="" src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title();?>">
+            </a>
+            <div>
+                <h3 class=""><?php the_title(); ?></h3>    
+                <?php if($location):?>
+                <p class="spot-location">            
+                        
+                <?php echo $location[0]->name ?>
+    
+                </p>
+                <?php endif; ?>
+            </div>
+            <div class="spot-content">
+                <?php the_excerpt() ?>
+                <a href="<?php the_permalink() ?>" class="" role="button">Keep reading >></a>
+            </div>
+        </div>
         
-        <p class="card-text">Here is some content.</p>
-        <a href="<?php the_permalink() ?>" class="btn btn-primary">Go somewhere</a>
-    
-    
-    
+
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+            
     </div>
-            
-</div>
 
-<?php endwhile; else: endif; ?>
+<?php else: endif; ?>
