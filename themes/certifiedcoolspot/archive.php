@@ -21,15 +21,16 @@
 
     <div class="section">
         <div class="section-wrap">
-            <?php get_template_part('includes/section', 'archive') ?>
+            <?php 
+            $args = array(
+                'offset' => 1,
+                'number_of_spots' => 6
+            );
+            get_template_part('includes/section', 'archive', $args);
+            ?>
         </div>
     </div>
 
-
-
-
-    <?php  previous_posts_link(); ?>
-    <?php  next_posts_link(); ?>
 </div>
 
 
