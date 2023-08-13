@@ -305,3 +305,16 @@
         }
     }
 }
+
+
+.see-archive {
+    text-decoration: none;
+    position: relative;
+    top: 50px;
+    float: right;
+    color: $accent-two;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.31em;
+    font-size: 1rem;
+ }
