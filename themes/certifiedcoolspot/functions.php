@@ -96,7 +96,6 @@ add_action('init', 'cool_spots_certification');
 
 
 // get ACF spot fields
-
 function get_acf_fields () {
     $website = get_field('website');
     $address = get_field('address');
