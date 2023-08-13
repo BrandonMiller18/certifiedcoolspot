@@ -17,6 +17,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
 <?php 
 $location = get_the_terms( $post->ID, 'locations' );
+
 ?>
 
 <div class="page-wrap">
@@ -42,6 +43,7 @@ $location = get_the_terms( $post->ID, 'locations' );
 
         <div>
             <div class="post-attr">
+                
                 <h2>About the spot.</h2>
 
                 <?php $data = get_acf_fields();
@@ -49,8 +51,6 @@ $location = get_the_terms( $post->ID, 'locations' );
                 $address = $data['address'];
                 $year_founded = $data['year_founded'];
                 $certified_since = $data['certified_since'];
-                
-                
                 ?>
 
                 <ul>
@@ -59,6 +59,7 @@ $location = get_the_terms( $post->ID, 'locations' );
                     <?php if ($year_founded) : echo "<li><strong>Founded:</strong> ", $year_founded, "</li>"; endif; ?>
                     <?php if ($certified_since) : echo "<li><strong>Certified Since:</strong> ", $certified_since, "</li>"; endif; ?>
                 </ul>
+
                 <div class="share">
                     <h3>Share this spot.</h3>
                     <p>Help others find this amazing spot by sharing it on your social media!</p>
@@ -67,59 +68,26 @@ $location = get_the_terms( $post->ID, 'locations' );
                         <div><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a></div>
                     </div>
                 </div>
+
             </div>
         </div>
 
     </div>
 
-    <?php
-    $args = array(
-        'post_type' => 'spots',
-        'posts_per_page' => 3
-    );
-    $recent_spots = new WP_Query( $args ); ?>
-
-    <?php if ( $recent_spots->have_posts() ) : ?>
     <div class="section">
                           
         <div class="section-wrap">
             <h2 class="section-heading">More Spots.</h2>
-            <div class="more-spots-grid">
-                <?php
-                while ( $recent_spots->have_posts() ) : $recent_spots->the_post(); 
-                $location = get_the_terms( $post->ID, 'locations' );
-                ?>
-                
-                    
-                <div class="spot-card">
-                    <a href="<?php the_permalink() ?>">
-                        <img class="" src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title();?>">
-                    </a>
-                    <div>
-                        <h3 class=""><?php the_title(); ?></h3>    
-                        <?php if($location):?>
-                        <p class="spot-location">            
-                                
-                        <?php echo $location[0]->name ?>
-            
-                        </p>
-                        <?php endif; ?>
-                    </div>
-                    <div class="spot-content">
-                        <?php the_excerpt() ?>
-                        <a href="<?php the_permalink() ?>" class="" role="button">Keep reading >></a>
-                    </div>
-                </div>
-                
-
-                <?php endwhile; ?>
-                <?php wp_reset_postdata(); ?>
-            
-            </div>
+            <?php
+                $args = array(
+                    'offset' => 0,
+                    'number_of_spots' => 3,
+                );  
+                get_template_part( 'includes/section', 'archive', $args );
+            ?>
         </div>
-            
+           
     </div>
-    <?php endif; ?>
 
 </div>
 

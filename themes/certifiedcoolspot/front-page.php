@@ -95,50 +95,16 @@
     <!-- recent spots -->
     <div class="section dark">
         
-        <h2 class="section-heading">More Certified Cool Spots.</h2>
-            
-        <div class="section-wrap">
-            <?php get_template_part('includes/section', 'archive') ?>
-            <a class="see-archive" href="/spots">See all >></a>
-        </div>
-
-            <!-- <?php if ( $recent_spots->have_posts() ) : ?>
-            <div class="recent-spots">
-                <?php
-                while ( $recent_spots->have_posts() ) : $recent_spots->the_post(); 
-                $location = get_the_terms( $post->ID, 'locations' );
-                ?>
-                
-                    
-                <div class="spot-card">
-                    <h3 class=""><?php the_title(); ?></h3>    
-                    <?php if($location):?>
-                        <p class="spot-location">            
-                        
-                            <?php echo $location[0]->name ?>
-    
-                        </p>
-                    <?php endif; ?>
-                    <a href="<?php the_permalink() ?>">
-                        <img class="" src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title();?>">
-                    </a>
-                    <div class="spot-content">
-                        <?php the_excerpt() ?>
-                        <a href="<?php the_permalink() ?>" class="btn btn-accent-two layered-btn-accent" role="button">Keep reading</a>
-                    
-                    
-                    
-                    </div>
-                
-                </div>
-                
-                
-                <?php endwhile; ?>
-            
-                <?php wp_reset_postdata(); ?>
-            
-            </div>
-            <?php endif; ?> -->
+        <h2 class="section-heading">Recent Certified Cool Spots.</h2>  
+        <div class="section-wrap flex-column">
+            <?php
+                $args = array(
+                    'offset' => 1,
+                    'number_of_spots' => 6,
+                );  
+                get_template_part('includes/section', 'archive', $args);
+            ?>
+            <a class="see-archive btn btn-accent layered-btn-sm" href="/spots">See all spots >></a>
         </div>
     
     
