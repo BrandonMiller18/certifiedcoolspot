@@ -111,7 +111,7 @@
     
     </div>
     
-<!-- End recent spots -->
+    <!-- End recent spots -->
 </div>
 
 

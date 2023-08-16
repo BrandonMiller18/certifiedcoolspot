@@ -3,8 +3,9 @@
 $offset = $args['offset'];	// Get offset value used to not select most recent post
 $posts = $args['number_of_spots'];	// Number of cards to display
 $current_url = "$_SERVER[REQUEST_URI]";
+$resp_code = http_response_code();
 
-if ( $current_url !== "/" ) {
+if ( $current_url !== "/" && $resp_code !== 404 ) {
     $args = array(
         'post_type' => 'spots',
         'posts_per_page' => $posts,
@@ -27,7 +28,6 @@ $recent_spots = new WP_Query( $args ); ?>
     <?php if ( $recent_spots->have_posts() ) : ?>
     <div class="more-spots-grid">
         <?php
-        $i = 0;
         while ( $recent_spots->have_posts() ) : $recent_spots->the_post(); 
         $location = get_the_terms( $post->ID, 'locations' );
         ?>
