@@ -51,47 +51,10 @@
         'posts_per_page' => 4,
         'offset' => 1,
     );
-    $recent_spots = new WP_Query( $args );
-
-    $latest_spot = new WP_Query(array(
-        'post_type' => 'spots',
-        'posts_per_page' => 1,
-        ),);
-    ?>
+    $recent_spots = new WP_Query( $args ); ?>
     
     <!-- Most recent Spot -->
-    <div id="featured-spot" class="section">
-        <h2 class="section-heading">Featured Spot.</h2>
-            
-        <div class="featured">
-            <?php if ( $latest_spot->have_posts() ) : ?>
-    
-                <?php while ( $latest_spot->have_posts() ) : $latest_spot->the_post();
-                $location = get_the_terms( $post->ID, 'locations' );?>
-        
-                    <div class="featured-image">
-                        <a href="<?php the_permalink() ?>"><img src="<?php the_post_thumbnail_url()  ?>" alt="<?php the_title();?>"></a>
-                    </div>
-                    <div class="featured-content">
-                        <div class="featured-title">
-                            <h3 class=""><?php the_title();?></h3>
-    
-                            <?php if($location):?>
-                            <p class="spot-location"><?php echo $location[0]->name ?></p>
-                            <?php endif; ?>
-                        </div>
-
-                        <?php the_excerpt() ?>
-                        
-                        <a href="<?php the_permalink() ?>" class="btn btn-accent-two layered-btn-accent" role="button">Keep reading</a>
-                    </div>
-    
-            <?php endwhile; endif; ?>
-    
-    
-        </div>
-    
-    </div>
+    <?php  get_template_part('includes/section', 'featured_spot') ?>
     <!-- end most recent spot -->
 
     
@@ -128,56 +91,27 @@
         <?php endforeach ?>
     </div>
     <!-- end locations callout -->
-    
+
     <!-- recent spots -->
     <div class="section dark">
         
-        <h2 class="section-heading">More Certified Cool Spots.</h2>
-            
-            <?php if ( $recent_spots->have_posts() ) : ?>
-            <div class="recent-spots">
-                <?php
-                while ( $recent_spots->have_posts() ) : $recent_spots->the_post(); 
-                $location = get_the_terms( $post->ID, 'locations' );
-                ?>
-                
-                    
-                <div class="spot-card">
-                    <h3 class=""><?php the_title(); ?></h3>    
-                    <?php if($location):?>
-                        <p class="spot-location">            
-                        
-                            <?php echo $location[0]->name ?>
-    
-                        </p>
-                    <?php endif; ?>
-                    <a href="<?php the_permalink() ?>">
-                        <img class="" src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title();?>">
-                    </a>
-                    <div class="spot-content">
-                        <?php the_excerpt() ?>
-                        <a href="<?php the_permalink() ?>" class="btn btn-accent-two layered-btn-accent" role="button">Keep reading</a>
-                    
-                    
-                    
-                    </div>
-                
-                </div>
-                
-                
-                <?php endwhile; ?>
-            
-                <?php wp_reset_postdata(); ?>
-            
-            </div>
-            <?php endif; ?>
+        <h2 class="section-heading">Recent Certified Cool Spots.</h2>  
+        <div class="section-wrap flex-column">
+            <?php
+                $args = array(
+                    'offset' => 1,
+                    'number_of_spots' => 6,
+                );  
+                get_template_part('includes/section', 'archive', $args);
+            ?>
+            <a class="see-archive btn btn-accent layered-btn-sm" href="/spots">See all spots >></a>
         </div>
     
     
     
     </div>
     
-<!-- End recent spots -->
+    <!-- End recent spots -->
 </div>
 
 

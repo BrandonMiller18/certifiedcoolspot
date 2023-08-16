@@ -94,4 +94,23 @@ function cool_spots_certification() {
 add_action('init', 'cool_spots_certification');
 
 
+
+// get ACF spot fields
+function get_acf_fields () {
+    $website = get_field('website');
+    $address = get_field('address');
+    $year_founded = get_field('year_founded');
+    $certified_since = get_field('certified_since');
+
+    $data = array(
+        'website'        => $website,
+        'address'        => $address,
+        'year_founded'   => $year_founded,
+        'certified_since' => $certified_since,
+    );
+
+    return $data;
+
+};
+
 ?>

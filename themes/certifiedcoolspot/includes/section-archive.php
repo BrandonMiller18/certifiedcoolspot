@@ -1,18 +1,33 @@
 <?php 
 
-$args = array(
-    'post_type' => 'spots',
-    'posts_per_page' => 6,
-    'paged' => $paged,
-    'order' => 'DESC', 
-    'orderby' => 'date'
-);
+$offset = $args['offset'];	// Get offset value used to not select most recent post
+$posts = $args['number_of_spots'];	// Number of cards to display
+$current_url = "$_SERVER[REQUEST_URI]";
+$resp_code = http_response_code();
+
+if ( $current_url !== "/" && $resp_code !== 404 ) {
+    $args = array(
+        'post_type' => 'spots',
+        'posts_per_page' => $posts,
+        'order' => 'DESC', 
+        'orderby' => 'date',
+        'post__not_in' => array($post->ID)
+    );
+} else {
+    $args = array(
+        'post_type' => 'spots',
+        'posts_per_page' => $posts,
+        'paged' => $paged,
+        'order' => 'DESC', 
+        'orderby' => 'date',
+        'offset' => $offset,
+    );
+};
 $recent_spots = new WP_Query( $args ); ?>
 
     <?php if ( $recent_spots->have_posts() ) : ?>
     <div class="more-spots-grid">
         <?php
-        $i = 0;
         while ( $recent_spots->have_posts() ) : $recent_spots->the_post(); 
         $location = get_the_terms( $post->ID, 'locations' );
         ?>
@@ -23,7 +38,7 @@ $recent_spots = new WP_Query( $args ); ?>
                 <img class="" src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title();?>">
             </a>
             <div>
-                <h3 class=""><?php the_title(); ?></h3>    
+                <h3><?php the_title(); ?></h3>    
                 <?php if($location):?>
                 <p class="spot-location">            
                         
