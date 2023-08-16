@@ -4,18 +4,32 @@
     justify-content: space-around;
     box-shadow: 0 5px #f0f inset;
     
-    @media screen and (max-width: 800px) {
-        justify-content: left;
+    @include mobile-only {
+        justify-content: flex-start;
     }
 
     > div {
         display: flex;
         flex-flow: column wrap;
-        @media screen and (max-width: 800px) {
+        
+        @include mobile-only {
             padding: 30px 20px;
         }
-        // background-color: red;
+
+        ul * {
+            padding: 5px 0;
+            color: $primary;
+            text-decoration: none;
+            transition: all 0.15s;
+            &:hover {
+                color: $accent;
+                @include lg {scale: 1.1;}
+            }
+                
+        }
+
         .section-heading {
+            font-weight: bold;
             &::after {
                 content: "";
                 display: block;
@@ -35,21 +49,24 @@
 
             ul {
                 display: flex;
-                li {padding: 25px;
+                i {
+                    padding: 25px;
+                    color: $primary;
+                    font-size: 3rem;
+                    transition: all 0.3s;
+                    &:hover {
+                        color: $accent;
+                        @include lg {scale: 1.1;}
+                    }
                 }
             }
         }
     }
 
-    a {
-        position: relative;
-        bottom: 0;
-        img {height: 100px;}
-    }
-
-    .socials {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
+    img {
+        height: 150px;
+        transition: all 0.3s;
+        @include lg {&:hover {scale: 1.1;}}
+        
     }
 }
