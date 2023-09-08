@@ -2,17 +2,36 @@
 
 $offset = $args['offset'];	// Get offset value used to not select most recent post
 $posts = $args['number_of_spots'];	// Number of cards to display
+$tax = $args['taxonomy']; // get the taxonomy of posts to query
+
 $current_url = "$_SERVER[REQUEST_URI]";
 $resp_code = http_response_code();
+$slug = basename(parse_url($current_url, PHP_URL_PATH));
 
-if ( $current_url !== "/" && $resp_code !== 404 ) {
+if ( strpos( $current_url, 'locations/') || strpos( $current_url, 'certification/')) {
+    $args = array(
+        'post_type' => 'spots',
+        'posts_per_page' => $posts,
+        'paged' => $paged,
+        'order' => 'DESC', 
+        'orderby' => 'date',
+        'offset' => $offset,
+        'tax_query' => array(
+            array(
+                'taxonomy' => $tax,
+                'field' => 'slug',
+                'terms' => $slug,
+            ),
+        ),
+    );
+} elseif ( $current_url !== "/" && $resp_code !== 404 ) {
     $args = array(
         'post_type' => 'spots',
         'posts_per_page' => $posts,
         'order' => 'DESC', 
         'orderby' => 'date',
         'post__not_in' => array($post->ID)
-    );
+    ); 
 } else {
     $args = array(
         'post_type' => 'spots',

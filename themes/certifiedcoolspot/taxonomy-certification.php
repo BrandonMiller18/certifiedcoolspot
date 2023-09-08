@@ -8,15 +8,11 @@ $term = get_queried_object();
 <div class="page-wrap">
     <div class="section dark divider-top-btm-accent">
         <h1><?php echo $term->name; ?></h1>
-        <p>Check out all the certifiably cool spots we have found in <?php echo $term->name; ?>.</p>
+        <p>Check out all the <?php echo $term->name; ?>.</p>
     </div>
 
     <div class="section divider-bottom-accent-two">
         <?php  get_template_part('includes/section', 'certs') ?>
-    </div>
-
-    <div class="section divider-bottom-accent-two">
-        <?php  get_template_part('includes/section', 'locations') ?>
     </div>
 
     <div class="section">
@@ -25,7 +21,7 @@ $term = get_queried_object();
             $args = array(
                 'offset' => 0,
                 'number_of_spots' => 6,
-                'taxonomy' => 'locations',
+                'taxonomy' => 'certification',
             );
             get_template_part('includes/section', 'archive', $args);
             ?>

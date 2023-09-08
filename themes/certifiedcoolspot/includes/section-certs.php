@@ -1,11 +1,11 @@
 <?php 
-    
+            
     $current_term = get_queried_object();
 
     $terms = get_terms( array(
-        'taxonomy'   => 'locations',
+        'taxonomy'   => 'certification',
         'hide_empty' => false,
-        'number'     => 5,
+        'number'     => 3,
         'exclude'    => $current_term->term_id,
     ) );?>
 <div class="section-wrap tags">
