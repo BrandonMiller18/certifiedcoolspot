@@ -15,7 +15,7 @@
         <div class="section-wrap flex-column">
             <?php
                 $args = array(
-                    'offset' => 1,
+                    'offset' => 0,
                     'number_of_spots' => 6,
                 );  
                 get_template_part('includes/section', 'archive', $args);
