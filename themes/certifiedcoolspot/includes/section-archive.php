@@ -2,7 +2,11 @@
 
 $offset = $args['offset'];	// Get offset value used to not select most recent post
 $posts = $args['number_of_spots'];	// Number of cards to display
-$tax = $args['taxonomy']; // get the taxonomy of posts to query
+
+if ( array_key_exists('taxonomy', $args) ){
+    $tax = $args['taxonomy']; // get the taxonomy of posts to query
+}
+
 
 $current_url = "$_SERVER[REQUEST_URI]";
 $resp_code = http_response_code();
